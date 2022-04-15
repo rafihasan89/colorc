@@ -1,0 +1,31 @@
+
+
+<div>
+
+    <div class="col-md-12" style="float: left;">
+      <br>
+      <h2>All Party List</h2>
+        <table class="table table-bordered">
+          <thead>
+              <tr>
+                  <th> SL</th>
+                  
+                   <th> Name</th>
+                  <th> Phone</th>
+                  <th> Action</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let p of partys; let i = index" >
+                  <td>{{i+1}}</td>   
+                   
+                   <td>{{p?.name}}</td>
+                  <td>{{p?.phone}}</td>
+                  
+                   
+                <td><a class="btn btn-success"  [routerLink]="['/admin/party/partyedit' ]" [queryParams]="{ id : p.id }"  >Edit</a>&nbsp; 
+                <button class="btn btn-danger" (click)="delete(p.id)" >Delete</button></td>
+              </tr>
+          </tbody>
+        </table>
+      </div>

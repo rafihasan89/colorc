@@ -1,0 +1,131 @@
+<div class="col-md-12">
+    <form (ngSubmit)="onSubmit()" #billForm="ngForm" class="">
+        <div class="form-group form-inline">
+            <label for="branch" class="labelp">Party Name: </label> &nbsp;&nbsp;
+                <select [(ngModel)]="partyId" name="partys" class="form-control selectParty" >
+                    <option value="0">Choose Party...</option>
+                    <option *ngFor="let p of partys" [ngValue]="p.id" >{{p.name}}</option>
+                </select> &nbsp;&nbsp; &nbsp; 
+            <label for="startDate" class="labelp">Start Date: </label> &nbsp;&nbsp;
+            <input type="date" class="form-control  " id="name" required [(ngModel)]="startDate" name="startDate"
+                #sDate="ngModel">
+            <div [hidden]="sDate.valid || sDate.pristine" class="alert alert-danger">
+                Start Date is required
+            </div>
+            &nbsp;&nbsp;
+            <label for="endDate" class="labelp">End Date: </label> &nbsp;&nbsp;
+            <input type="date" class="form-control  " id="name" required [(ngModel)]="endDate" name="endDate"
+                #eDate="ngModel">
+            <div [hidden]="eDate.valid || eDate.pristine" class="alert alert-danger">
+                End Date is required
+            </div>
+            &nbsp;&nbsp;
+            <button type="submit" class="btn btn-success" [disabled]="!billForm.form.valid">Find</button>
+        </div>
+
+    </form>
+</div>
+
+<div class="col-md-12 fleft" *ngIf="view">
+    <div>
+        <div class="card">
+            <div class="card-header">
+                <b>Party Statement </b>
+                <button class="btn btn-success" style="float: right;" (click)="onPrint('sectionToPrint')">Print</button>
+            </div>
+            <div class="card-body" id="sectionToPrint" style="padding: 2px 2px;">
+
+
+
+                <div class="p-grid -fluid" style="font-size:16px;padding:2px">
+
+                    <h1 style="text-align: center;  font-weight: bold;">
+                        Party Name: {{partyName }}
+                        <br>
+                        Date: {{startDate +" To "+ endDate }}
+                        <br>
+
+                        Statement
+
+                    </h1>
+
+
+
+                            <table id="tt2" style="border-collapse: collapse;">
+
+                                <thead>
+                                    <tr>
+                                        <td>SL</td>
+                                        <td>Date</td>
+                                        <td>Bill No</td>
+                                        <td>Debit</td>
+                                        <td>Credit</td>
+                                        <td>Balance</td>
+                                        
+                                    </tr>
+                                </thead>
+
+
+                                <tbody>
+                                    <tr *ngFor="let w of partystatement; let i = index">
+                                        <td>
+                                            {{i+1}}
+                                        </td>
+                                        <td>{{w.date}}</td>
+                                        <td><span *ngIf="w.billNo != 0">{{w.billNo}}</span></td>
+                                        <td><span *ngIf="w.debit != 0"> {{w.debit | number:'0.0-0'}} </span></td>
+                                        <td><span *ngIf="w.credit != 0">{{w.credit | number:'0.0-0'}}</span></td>
+                                        <td>{{w.balance  | number:'1.2-2'}}</td>
+                                        
+                                    </tr>
+
+                                    <tr >
+                                        
+                                        <td colspan="3" style="  font-size: 19px; text-align: right;">Total &nbsp; &nbsp; </td>
+                                        <td style=" font-size: 19px;"> {{totaldebit | number:'1.2-2'}}</td>
+                                        
+                                        <td style="  font-size: 19px;">{{totalcredit | number:'1.2-2'}}</td>
+                                        <td style="  font-size: 19px;">{{total | number:'1.2-2'}}</td>
+
+                                    </tr>
+
+
+
+                                    <!-- <tr>
+                                        <td colspan="2"></td>
+
+                                        <td style="background-color: #dddddd;">{{b.totalqty}} KGS </td>
+                                        <td style="background-color: #dddddd;">{{b.total}} TK </td>
+                                    </tr> -->
+                                </tbody>
+                            </table>
+
+
+                    
+
+
+
+
+
+
+                 
+
+
+                    
+
+
+                </div> 
+
+                <!-- content -->
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

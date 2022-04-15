@@ -1,0 +1,106 @@
+<div class="col-md-12">
+    <form (ngSubmit)="onSubmit()" #billForm="ngForm" class="">
+        <div class="form-group form-inline">
+            <label for="startDate" class="labelp">Date: </label> &nbsp;&nbsp;
+            <input type="date" class="form-control  " id="name" required [(ngModel)]="date" name="startDate"
+                #sDate="ngModel">
+            <div [hidden]="sDate.valid || sDate.pristine" class="alert alert-danger">
+                Start Date is required
+            </div>
+            &nbsp;&nbsp;
+            <button type="submit" class="btn btn-success" [disabled]="!billForm.form.valid">Find</button>
+        </div>
+
+    </form>
+</div>
+
+<div class="col-md-12 fleft" *ngIf="view">
+    <div>
+        <div class="card">
+            <div class="card-header">
+                <b>Week Statement </b>
+                <button class="btn btn-success" style="float: right;" (click)="onPrint('sectionToPrint')">Print</button>
+            </div>
+            <div class="card-body" id="sectionToPrint" style="padding: 2px 2px;">
+
+
+
+                <div class="p-grid -fluid" style="font-size:16px;padding:2px">
+
+                    <h1 style="text-align: center;  font-weight: bold;">
+                        Date: {{date }}
+                        <br>
+
+                        Week Statement
+
+                    </h1>
+
+
+
+                            <table id="tt2" style="border-collapse: collapse;">
+
+                                <thead>
+                                    <tr>
+                                        <td>SL</td>
+                                        <td>Party Name</td>
+                                        <td>Opening Balance</td>
+                                        <td>Sell</td>
+                                        <td>Collection</td>
+                                        <td>Closing Balance</td>
+                                    </tr>
+                                </thead>
+
+
+                                <tbody>
+                                    <tr *ngFor="let w of weekstatements; let i = index">
+                                        <td>
+                                            {{i+1}}
+                                        </td>
+                                        <td>{{w.partyName}}</td>
+                                        <td>{{w.opiningBalance}}</td>
+                                        <td>{{w.sell}}</td>
+                                        <td>{{w.collection}}</td>
+                                        <td>{{w.closeingBalance}}</td>
+
+                                    </tr>
+
+
+
+                                    <!-- <tr>
+                                        <td colspan="2"></td>
+
+                                        <td style="background-color: #dddddd;">{{b.totalqty}} KGS </td>
+                                        <td style="background-color: #dddddd;">{{b.total}} TK </td>
+                                    </tr> -->
+                                </tbody>
+                            </table>
+
+
+                    
+
+
+
+
+
+
+                 
+
+
+                    
+
+
+                </div> 
+
+                <!-- content -->
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

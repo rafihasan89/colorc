@@ -1,0 +1,331 @@
+<div class="col-md-12">
+    <form (ngSubmit)="onSubmit()" #billForm="ngForm" class="">
+        <div class="form-group form-inline">
+            <div class="form-group form-inline">
+                <label for="branch" class="labelp">Branch Stock: </label> &nbsp;&nbsp;
+                <select [(ngModel)]="branchid" name="branchs" class="form-control selectBranch" >
+                    <option value="0">Choose Branch...</option>
+                    <option *ngFor="let b of branchs" [ngValue]="b.id" >{{b.name}}</option>
+            </select>
+            </div>
+            &nbsp;&nbsp;
+            <label for="startDate" class="labelp">Start Date: </label> &nbsp;&nbsp;
+            <input type="date" class="form-control  " id="name" required [(ngModel)]="startDate" name="startDate"
+                #sDate="ngModel">
+            <div [hidden]="sDate.valid || sDate.pristine" class="alert alert-danger">
+                Start Date is required
+            </div>
+            &nbsp;&nbsp;
+            <label for="endDate" class="labelp">End Date: </label> &nbsp;&nbsp;
+            <input type="date" class="form-control  " id="name" required [(ngModel)]="endDate" name="endDate"
+                #eDate="ngModel">
+            <div [hidden]="eDate.valid || eDate.pristine" class="alert alert-danger">
+                End Date is required
+            </div>
+            &nbsp;&nbsp;
+            <button type="submit" class="btn btn-success" [disabled]="!billForm.form.valid">Find</button>
+        </div>
+
+    </form>
+</div>
+
+<div class="col-md-12 fleft" *ngIf="view">
+    <div>
+        <div class="card">
+            <div class="card-header">
+                <b>Daily Sheet </b>
+                <button class="btn btn-success" style="float: right;" (click)="onPrint('sectionToPrint')">Print</button>
+            </div>
+            <div class="card-body" id="sectionToPrint" style="padding: 2px 2px;">
+
+
+
+                <div class="p-grid -fluid" style="font-size:16px;padding:2px">
+
+                    <h1 style="text-align: center;  font-weight: bold;">
+                        Date: {{startDate +" To "+ endDate }}
+                        <br>
+
+                        Buy Bill List
+
+                    </h1>
+
+                    <div class="flex flex-wrap">
+                        <div *ngFor="let b of buyBills; let i = index" class="col-md-6"
+                            style="float: left;padding: 3px 3px;">
+                            <div style="padding: 2px 2px;">
+
+
+                                <table id="tt" style="background-color: #dddddd;">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                SL NO.
+                                            </td>
+                                            <td> :</td>
+                                            <td>
+                                                {{i+1}}
+                                            </td>
+                                            <td>
+                                                Branch Name
+                                            </td>
+                                            <td> :</td>
+                                            <td colspan="4">
+                                                {{b.branchname}}
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td>Bil No</td>
+                                            <td>:</td>
+                                            <td> {{b.billNo}}</td>
+                                            <td> Date </td>
+                                            <td> :</td>
+                                            <td> {{b.billDate}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Party Name</td>
+                                            <td>:</td>
+                                            <td colspan="4" id="partyName"> {{b.partyname}} </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                                <table id="tt2" style="border-collapse: collapse;">
+
+                                    <thead>
+                                        <tr>
+                                            <td>SL</td>
+                                            <td>ITEM</td>
+                                            <td>UNIT</td>
+                                            <td>TOTAL</td>
+                                        </tr>
+                                    </thead>
+
+
+                                    <tbody>
+                                        <tr *ngFor="let p of b.itemList; let i = index">
+                                            <td>
+                                                {{i+1}}
+                                            </td>
+                                            <td>{{p.productname}}</td>
+                                            <td>
+                                                {{p.quantity}} KG * {{p.sellPrice}} TK
+                                            </td>
+                                            <td>
+                                                {{p.itemtotal | number:'1.0-0'}} TK
+
+                                            </td>
+                                        </tr>
+
+
+
+                                        <tr>
+                                            <td colspan="2"></td>
+
+                                            <td style="background-color: #dddddd;font-size: 20px;">{{b.totalqty | number:'1.0-0'}} KGS </td>
+                                            <td style="background-color: #dddddd;font-size: 20px;">{{b.total | number:'1.0-0'}} TK </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 fleft">
+                        <br>
+                        <h1 style="text-align: center; font-weight: bold;">
+                            Date: {{startDate +" To "+ endDate }}
+                            <br>
+
+                            Sell Bill List
+
+                        </h1>
+                    </div>
+
+                    <div class="flex flex-wrap col-md-12 fleft" style="padding: 0px 0px;">
+                        <div *ngFor="let b of sellBills; let i = index" class="   col-md-6"
+                            style="float: left;padding: 3px 3px;">
+
+
+
+                            <div style="padding: 2px 2px;">
+
+
+                                <table id="tt" style="background-color: #dddddd;">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                SL NO.
+                                            </td>
+                                            <td> :</td>
+                                            <td>
+                                                {{i+1}}
+                                            </td>
+                                            <td>
+                                                Branch Name
+                                            </td>
+                                            <td> :</td>
+                                            <td>
+                                                {{b.branchname}}
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td>Bil No</td>
+                                            <td>:</td>
+                                            <td> {{b.billNo}}</td>
+                                            <td> Date </td>
+                                            <td> :</td>
+                                            <td> {{b.billDate}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Party Name</td>
+                                            <td>:</td>
+                                            <td colspan="4" id="partyName"> {{b.partyname}} </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                                <table id="tt2" style="border-collapse: collapse;">
+
+                                    <thead>
+                                        <tr>
+                                            <td>SL</td>
+                                            <td>ITEM</td>
+                                            <td>UNIT</td>
+                                            <td>TOTAL</td>
+                                        </tr>
+                                    </thead>
+
+
+                                    <tbody>
+                                        <tr *ngFor="let p of b.itemList; let i = index">
+                                            <td>
+                                                {{i+1}}
+                                            </td>
+                                            <td>{{p.productname}}</td>
+                                            <td>
+                                                {{p.quantity}} KG * {{p.sellPrice}} TK
+                                            </td>
+                                            <td>
+                                                {{p.itemtotal | number:'1.0-0'}} TK
+
+                                            </td>
+                                        </tr>
+
+
+
+                                        <tr>
+                                            <td colspan="2"></td>
+
+                                            <td style="background-color: #dddddd; font-size: 20px;">{{b.totalqty | number:'1.0-0'}} KGS </td>
+                                            <td style="background-color: #dddddd; font-size: 20px;">{{b.total | number:'1.0-0'}} TK </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+
+
+
+
+                        </div>
+
+                    </div>
+
+
+
+
+                    
+                    <div class="col-md-12 fleft">
+                        <br>
+                        <h1 style="text-align: center; font-weight: bold;">
+
+
+                            <!-- TOTAL STOCK -->
+
+                        </h1>
+                    </div>
+
+
+                    <!-- start buy stock -->
+                    <div>
+                        <div class="col-md-12 stock fleft">
+                            <h2 style="font-weight: bold;">
+                                Buy Stock:
+                            </h2>
+                            
+                            <ng-container *ngFor="let s of buyStocks; let i = index" >
+                                <div *ngIf="s.qty>0" class="col-md-4 stockItem">{{i+1}}. {{s.productName}} : {{s.qty  | number:'1.2-2'}} KGS</div>
+                            </ng-container>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 fleft">
+                        <br>
+                        <h1 style="text-align: center; font-weight: bold;">
+
+
+                            TOTAL BUY : {{totalBuyQty | number:'1.2-2'}} KGS {{totalBuy | number:'1.2-2'}} TK
+
+                        </h1>
+                    </div>
+
+                    <!-- start Sell stock -->
+                    <div>
+                        <div class="col-md-12 stock fleft">
+                            <h2 style="font-weight: bold;">
+                                Sell Stock:
+                            </h2>
+                            <ng-container *ngFor="let s of sellStocks; let i = index"  >
+                                <div *ngIf="s.qty>0" class="col-md-4 stockItem">{{i+1}}. {{s.productName}} : {{s.qty  | number:'1.2-2'}} KGS</div>
+                            </ng-container>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 fleft">
+                        <br>
+                        <h1 style="text-align: center; font-weight: bold;">
+
+
+                            TOTAL SELL : {{totalSellQty | number:'1.2-2'}} KGS {{totalSell | number:'1.2-2'}} TK
+
+                        </h1>
+                    </div>
+
+                    <!-- <div>
+                        <div class="col-md-12 stock fleft">
+                            <h2 style="font-weight: bold;">
+                                Stock:
+                            </h2>
+                            <div *ngFor="let s of stocks; let i = index" class="col-md-4 stockItem">
+                                <div>{{i+1}}. {{s.productName | number:'1.2-2'}} : {{s.qty}} KGS</div>
+                            </div>
+                        </div>
+                    </div> -->
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

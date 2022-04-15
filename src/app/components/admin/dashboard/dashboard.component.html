@@ -1,0 +1,79 @@
+<!-- Image and text -->
+<nav class="navbar navbar-light "
+  style="background-color: #f8f9fa !important; box-shadow: 0 5px 5px 0 rgb(0 0 0 / 20%); margin-bottom: 10px;padding: 0px 0px;">
+  <a class="navbar-brand" routerLink="/admin">
+    HOME
+
+  </a>
+  <div style="float: right; margin-right: 20px;">
+
+
+    <div style="float: right; margin-right: 10px;">
+      <button mat-raised-button [matMenuTriggerFor]="menu">
+        <mat-icon>person</mat-icon>
+        <span> {{user.name}}</span>
+      </button>
+
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/admin/profile">Profile</button>
+        <button mat-menu-item (click)='logout()'>Logout</button>
+      </mat-menu>
+    </div>
+
+ 
+
+
+  </div>
+</nav>
+
+<div>
+  <div class="col-md-2" style="float: left; padding-left: 2px;">
+
+    <ul class="list-group">
+      <li class="list-group-item active"><a routerLink="/admin" style="color: #ffffff;">HOME</a></li>
+      <li class="list-group-item"><a routerLink="/admin/bill">Bill</a></li>
+      <li class="list-group-item"><a routerLink="/admin/payment">Payment</a></li>
+      
+
+
+
+    </ul><br>
+    <ul class="list-group">
+
+      <li class="list-group-item"><a routerLink="/admin/stock"> Stock </a></li>
+     
+
+    </ul>
+    <br>
+    <ul class="list-group">
+
+      
+      <li class="list-group-item"><a routerLink="/admin/dsheet"> Deaily Sheet </a></li>
+      <li class="list-group-item"><a routerLink="/admin/psheet"> Party Sheet </a></li>
+
+    </ul>
+    <br>
+    <ul class="list-group">
+
+      <li class="list-group-item"><a routerLink="/admin/wstatement">Week Statement</a></li>
+      <li class="list-group-item"><a routerLink="/admin/pstatement">Party Statement</a></li>
+
+    </ul>
+    <br>
+    <ul class="list-group">
+
+      <li class="list-group-item"><a routerLink="/admin/party">Party</a></li>
+      <li class="list-group-item"><a routerLink="/admin/seller">Seller</a></li>
+      <li class="list-group-item"><a routerLink="/admin/branch">Branch</a></li>
+      <li class="list-group-item"><a routerLink="/admin/product">Product</a></li>
+      <li class="list-group-item"><a routerLink="/admin/user">User</a></li>
+
+    </ul>
+
+  </div>
+  <div class="col-md-10 " style="float: left; padding-left: 2px;">
+
+    <router-outlet></router-outlet>
+
+  </div>
+</div>

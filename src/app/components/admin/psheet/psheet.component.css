@@ -1,0 +1,57 @@
+#tt{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#tt td{
+border: 1px solid #000000;
+font-size: 16px;
+font-weight: bold;
+}
+
+#tt tr td:nth-child(1) {
+    width: 110px;
+}
+#tt tr td:nth-child(2) {
+    width: 15px;
+}
+
+#tt tr:nth-child(2) td:nth-child(3) {
+    width: 150px;
+}
+ 
+
+#tt2{
+    border-collapse: collapse;
+    width: 100%;
+}
+#tt2 td{
+border: 1px solid #000000;
+font-size: 16px;
+font-weight: bold;
+text-align: center;
+}
+
+.fleft{
+    float: left;
+}
+.stock{
+    margin-top: 10px;
+    height: auto;
+    float: left;
+    margin-bottom: 30px;
+}
+.stockItem{
+    font-size: 20px;
+    font-weight: bold;
+    float: left;
+    margin-bottom: 10px;
+}
+.labelp{
+    font-size: 20px;
+    font-weight: bold;
+}
+.selectBranch{
+    font-size: 20px;
+    font-weight: bold;
+}

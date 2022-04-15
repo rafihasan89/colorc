@@ -1,0 +1,23 @@
+.stock{
+    margin-top: 10px;
+    height: auto;
+    float: left;
+    margin-bottom: 30px;
+}
+.stockItem{
+    font-size: 20px;
+    font-weight: bold;
+    float: left;
+    margin-bottom: 10px;
+}
+.labelp{
+    font-size: 20px;
+    font-weight: bold;
+}
+.selectBranch{
+    font-size: 20px;
+    font-weight: bold;
+}
+.fleft{
+    float: left;
+}

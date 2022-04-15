@@ -1,0 +1,73 @@
+<div style="padding: 30px 0px;">
+	<!-- <h1 style="color: green; text-align: center;background-color: white; border-radius: 10px;
+	padding: 10px 20px;font-size: 32px;box-shadow: 0 5px 5px 0 rgb(0 0 0 / 20%); "> COLOR CHEM BD</h1> -->
+	
+</div>
+	
+<div class="container" id="container">
+	
+	<div  class="form-container sign-in-container ">
+		   
+		<br><br>
+		 
+			<h1 style="text-align: center; margin-bottom: 30px;">Sign In</h1>
+			
+			<form (ngSubmit)="formSubmit()">
+				<mat-form-field>
+				  <input
+				  [(ngModel)]="loginData.username"
+					matInput
+					placeholder="Username"
+					required
+					name="username"
+					ngModel
+					#email="ngModel">
+					<mat-error *ngIf="email.invalid">Username is required</mat-error>
+				</mat-form-field>
+				<mat-form-field>
+				  <input
+				  [(ngModel)] = 'loginData.password'
+					matInput
+					placeholder="Password"
+					type="password"
+					required
+					minlength="6"
+					name="password"
+					ngModel
+					#password="ngModel">
+					<mat-error
+					  *ngIf="password.errors && password.errors.required">
+					  Password is required
+					</mat-error>
+					<mat-error
+					  *ngIf="password.errors && password.errors.minlength">
+					  Password must be of length 6
+					</mat-error>
+				</mat-form-field>
+				<mat-checkbox>Remember Me!</mat-checkbox>
+				<button
+				type="submit"
+				  mat-raised-button
+				  color="primary"
+				  class="login-button">
+				 Login 
+				</button>
+			  </form>
+		 
+	</div>
+
+	<div  class="overlay-container">
+		<div class="overlay">
+			
+			<div class="overlay-panel overlay-right ">
+				<div class="" style="text-align: center;">
+					<img src="../assets/loginlogo.png" width="320" height="250"   >
+				</div>
+				<br><br>
+				 
+				<p></p> 
+				
+			</div>
+		</div>
+	</div>
+</div>

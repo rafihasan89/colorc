@@ -1,0 +1,129 @@
+<div class="col-md-12" style="padding:0px 0px; float: left;">
+
+    <form (ngSubmit)="onSubmit()" #billForm="ngForm" class="">
+     
+  
+  
+        <div class="col-md-12" style="float: left;">
+          <div class="form-group" style="height: 12px;">
+            <label for="roles" style="width: 8%;float: left; font-size: 20px; font-weight: bold; margin-top: 4px;">Method: </label>
+            <div class="form-check form-check-inline" style="width: 8%;float: left;">
+                <input  [(ngModel)]="data.methodv"  (change)="method(1)"  class="form-check-input" type="radio" name="role" id="exampleRadios1" value="1" required #role="ngModel" >
+                <label class="form-check-label" for="exampleRadios1">
+                  BUY
+                </label>
+              </div>
+              <div class="form-check form-check-inline" style="width: 9%;float: left;">
+                <input [(ngModel)]="data.methodv" (change)="method(2)" class="form-check-input" type="radio" name="role" id="exampleRadios2" value="2" required #role="ngModel">
+                <label class="form-check-label" for="exampleRadios2">
+                  SELL
+                </label>
+              </div>
+              <div class="form-check form-check-inline" style="width: 15%;float: left;">
+                <input [(ngModel)]="data.methodv" (change)="method(3)" class="form-check-input" type="radio" name="role" id="exampleRadios3" value="3" required #role="ngModel">
+                <label class="form-check-label" for="exampleRadios3">
+                  TRANSFER
+                </label>
+              </div>
+              
+              <div [hidden]="role.valid || role.pristine"
+              class="alert alert-danger">
+              Bill Method is required
+              </div>
+              </div><br>
+            
+            <div class="form-group form-inline">
+                <label for="branch" class="labelp">Bill No: </label> &nbsp;&nbsp;
+                <input type="number" class="form-control  " id="name" required [(ngModel)]="data.billNo" name="billNo"
+                #billNo="ngModel"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div [hidden]="billNo.valid || billNo.pristine" class="alert alert-danger">
+                  Bill No is required
+                </div>
+
+                <label for="branch" class="labelp">Date: </label> &nbsp;&nbsp;
+                <input type="date" class="form-control  " id="name" required [(ngModel)]="data.billDate" name="billdate"
+                #billDate="ngModel">
+                <div [hidden]="billDate.valid || billDate.pristine" class="alert alert-danger">
+                Date is required
+              </div>
+            </div>
+            
+            <div *ngIf='!data.transfer' class="form-group form-inline">
+              
+                <label *ngIf="data.buy" for="sellers" class="labelp">Seller Name: </label> <span *ngIf="data.buy"> &nbsp;&nbsp;</span>
+                 <select *ngIf="data.buy" [(ngModel)]="data.seller.id" name="sellers" class="form-control selectParty" >
+                     <option value="0">Choose Seller...</option>
+                     <option *ngFor="let p of sellers" [ngValue]="p.id" >{{p.name}}</option>
+                 </select> 
+               
+              
+                <label *ngIf="data.sell" for="partys" class="labelp">Party Name: </label> <span *ngIf="data.sell"> &nbsp;&nbsp;</span>
+                <select  *ngIf="data.sell" [(ngModel)]="data.party.id" name="partys" class="form-control selectParty" >
+                    <option value="0">Choose Party...</option>
+                    <option *ngFor="let p of partys" [ngValue]="p.id" >{{p.name}}</option>
+                </select> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+              
+                
+                <label for="branch" class="labelp">Branch: </label> &nbsp;&nbsp;
+                <select [(ngModel)]="data.branch.id" name="branchs" class="form-control selectBranch" >
+                    <option value="0">Choose Branch...</option>
+                    <option *ngFor="let b of branchs" [ngValue]="b.id" >{{b.name}}</option>
+                </select>
+            </div>
+
+            <div *ngIf='data.transfer'  class="form-group form-inline">
+              <label for="transferFrom" class="labelp">From Branch: </label> &nbsp;&nbsp;
+              <select [(ngModel)]="data.transferfrom.id" name="frombranchs" class="form-control selectBranch" >
+                  <option value="0">Choose Branch...</option>
+                  <option *ngFor="let b of frombranchs" [ngValue]="b.id" >{{b.name}}</option>
+              </select> &nbsp;&nbsp; &nbsp;&nbsp;  <i class="pi pi-arrow-right" style="font-size: 2rem"></i>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <label for="branchTo" class="labelp">To Branch: </label> &nbsp;&nbsp;
+              <select [(ngModel)]="data.transferto.id" name="tobranchs" class="form-control selectBranch" >
+                  <option value="0">Choose Branch...</option>
+                  <option *ngFor="let b of tobranchs" [ngValue]="b.id" >{{b.name}}</option>
+              </select>
+          </div>
+
+            <div class="col-md-12" style="float: left; padding: 0px 0px;">
+                <div  *ngFor="let item of data.itemList; let i = index; trackBy:trackByIndex;" class="form-group form-inline item col-md-6" style="float: left; padding: 0px 0px;">
+                    <span class="sname">{{data.itemList[i].product.shortName}}</span>
+                    <input type="number" class="form-control  qty" id="name"  [(ngModel)]="data.itemList[i].quantity" (keyup)="getItemPrice(data.itemList[i]); itemTotal(data.itemList[i])" name=a{{i}}  placeholder="Quantity" autocomplete="off">
+                    <input type="number" class="form-control  sprice" id="name"  [(ngModel)]="data.itemList[i].sellPrice" (keyup)="itemTotal(data.itemList[i])"  name=b{{i}} placeholder="Price" autocomplete="off">
+                    <input type="number" disabled class="form-control  itotal" id="name"  [(ngModel)]="data.itemList[i].itemTotal" name=c{{i}} >
+                </div>
+               
+            </div>
+
+
+
+
+            <div class="col-md-12" style="float: right; padding: 0px 0px;">
+
+            <div class="form-group  form-inline" style="float: right; ">
+              <label for="name" class="samount">Total : </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <input type="text" class="form-control amount" id="name" required [(ngModel)]="data.total" name="total"
+                 >
+               
+            </div>
+            
+            </div>
+  
+            <div style="float: right;">
+  
+              <button *ngIf='!isEdit' type="submit" class="btn btn-success" [disabled]="!billForm.form.valid">Add New
+                Bill</button>
+              <button *ngIf='isEdit' type="submit" class="btn btn-primary" [disabled]="!billForm.form.valid">Edit
+                Bill</button> &nbsp;&nbsp;&nbsp;
+              <button type="button" class="btn btn-success" (click)="billForm.reset()">Reset</button>
+            </div>
+  
+          </div><br>
+  
+         
+       
+  
+  
+  
+    </form>
+  
+  </div>

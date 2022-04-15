@@ -1,0 +1,148 @@
+<div class="col-md-12" style="padding:0px 0px; float: left;">
+   
+    <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+      <br>  
+      <div>
+
+        
+        <div class="col-md-5" style="padding:0px 15px; float: left;">
+        <div><h2>User Information</h2></div>
+        <div>    
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name"
+                   required
+                   [(ngModel)]="userData.name" name="name"
+                   #name="ngModel">
+            <div [hidden]="name.valid || name.pristine"
+                 class="alert alert-danger">
+                 Name No is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email"
+                   required
+                   [(ngModel)]="userData.email" name="email"
+                   #email="ngModel" >
+            <div [hidden]="email.valid || email.pristine"
+                 class="alert alert-danger">
+                 Email is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username"
+                   required
+                   [(ngModel)]="userData.username" name="username"
+                   #username="ngModel">
+            <div [hidden]="username.valid || username.pristine"
+                 class="alert alert-danger">
+                 Username is required
+            </div>
+            
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password"
+                   required
+                   [(ngModel)]="userData.password" name="password"
+                   #password="ngModel">
+            <div [hidden]="password.valid || password.pristine"
+                 class="alert alert-danger">
+                Password is required
+            </div>
+            
+          </div>  
+          <br>
+
+          <div class="form-group">
+            <label for="roles" style="width: 15%;float: left;">User Role</label>
+            <div class="form-check" style="width: 20%;float: left;">
+                <input  [(ngModel)]="userData.roles[0].name" class="form-check-input" type="radio" name="role" id="exampleRadios1" value="ROLE_ADMIN" required #role="ngModel" >
+                <label class="form-check-label" for="exampleRadios1">
+                  ADMIN
+                </label>
+              </div>
+              <div class="form-check" style="width: 20%;float: left;">
+                <input [(ngModel)]="userData.roles[0].name" class="form-check-input" type="radio" name="role" id="exampleRadios2" value="ROLE_OFFICER" required #role="ngModel">
+                <label class="form-check-label" for="exampleRadios2">
+                  OFFICER
+                </label>
+              </div>
+              
+              <div [hidden]="role.valid || role.pristine"
+              class="alert alert-danger">
+              Role is required
+              </div>
+          </div><br>
+          
+        </div>
+    </div>     
+
+    <div class="col-md-5" style="padding:0px 0px; float: left;">
+        <div><h2>User Address</h2></div> 
+        <div class="form-group">
+            <label for="streetName">Street Name</label>
+            <input type="text" class="form-control" id="streetName"
+                   required
+                   [(ngModel)]="userData.address.streetName" name="streetName"
+                   #streetName="ngModel">
+            <div [hidden]="streetName.valid || streetName.pristine"
+                 class="alert alert-danger">
+                 Street Name   is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" class="form-control" id="city"
+                   required
+                   [(ngModel)]="userData.address.city" name="city"
+                   #city="ngModel">
+            <div [hidden]="city.valid || city.pristine"
+                 class="alert alert-danger">
+                 City is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="country">Country</label>
+            <input type="text" class="form-control" id="country"
+                   required
+                   [(ngModel)]="userData.address.country" name="country"
+                   #country="ngModel">
+            <div [hidden]="country.valid || country.pristine"
+                 class="alert alert-danger">
+                 Country is required
+            </div>
+          </div>
+          
+          <div class="form-group" style="margin-bottom: 10px;">
+            <label for="zipCode">Zip Code</label>
+            <input type="text" class="form-control" id="zipCode"
+                   required
+                   [(ngModel)]="userData.address.zipCode" name="zipCode"
+                   #zipCode="ngModel">
+            <div [hidden]="zipCode.valid || zipCode.pristine"
+                 class="alert alert-danger">
+                 Zip Code is required
+            </div>
+            <div class="form-check form-check-inline" style="margin-top: 10px;">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                <label class="form-check-label" for="inlineCheckbox1"> Declare All Information Are True</label>
+            </div>
+          </div>
+
+          <div style="float: right;">
+ 
+          <button *ngIf='!isEdit' type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Add New User</button>
+          <button *ngIf='isEdit' type="submit" class="btn btn-primary" [disabled]="!heroForm.form.valid">Edit User</button> &nbsp;&nbsp;&nbsp;
+          <button type="button" class="btn btn-success" (click)=" heroForm.reset()">Reset</button>
+            </div>
+    </div>
+   </div>
+ </form>
+
+</div>

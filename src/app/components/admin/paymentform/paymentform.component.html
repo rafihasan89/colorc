@@ -1,0 +1,58 @@
+<div class="col-md-12">
+
+    <form (ngSubmit)="onSubmit()" #branchForm="ngForm">
+      <div>
+  
+  
+        <div class="col-md-5" style="float: left;">
+          <div>
+            <h1>Payment Information</h1>
+          </div>
+          <div>
+
+            <div class="form-group">
+                <label for="branch">Party Name</label>
+                <select [(ngModel)]="data.party.id" name="partys" class="form-control selectParty" >
+                    <option value="0">Choose Party...</option>
+                    <option *ngFor="let p of partys" [ngValue]="p.id" >{{p.name}}</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="date" class="labelp">Date: </label> &nbsp;&nbsp;
+                <input type="date" class="form-control  " id="name" required [(ngModel)]="data.date" name="date"
+                #date="ngModel">
+                <div [hidden]="date.valid || date.pristine" class="alert alert-danger">
+                Date is required
+              </div>
+                </div>
+
+            <div class="form-group">
+              <label for="name">Amount</label>
+              <input type="text" class="form-control amount" id="name" required [(ngModel)]="data.amount" name="name"
+                #name="ngModel">
+              <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                Amount is required
+              </div>
+            </div>
+  
+  
+            <div style="float: right;">
+  
+              <button *ngIf='!isEdit' type="submit" class="btn btn-success" [disabled]="!branchForm.form.valid">Add New
+                Payment</button>
+              <button *ngIf='isEdit' type="submit" class="btn btn-primary" [disabled]="!branchForm.form.valid">Edit
+                Payment</button> &nbsp;&nbsp;&nbsp;
+              <button type="button" class="btn btn-success" (click)="branchForm.reset()">Reset</button>
+            </div>
+  
+          </div><br>
+  
+        </div>
+      </div>
+  
+  
+  
+    </form>
+  
+  </div>

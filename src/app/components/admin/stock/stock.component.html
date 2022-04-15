@@ -1,0 +1,33 @@
+<div class="col-md-12 stock fleft" style="  min-height: 100px;">
+    <h2 style="font-weight: bold;">
+        Final Stock:
+    </h2> 
+    <div *ngFor="let s of stocks; let i = index" class="col-md-4 stockItem fleft" >
+        <div >{{i+1}}. {{s.productName}} : {{s.qty | number:'1.0-0'}} KGS</div>
+    </div>
+</div>
+<br>
+
+
+
+<div class="col-nd-12 fleft"  >
+
+</div>
+
+<div class="col-md-12 stock" style=" float: left;  min-height: 100px;">
+    
+    <form  #billForm="ngForm" class="">
+        <div class="form-group form-inline">
+            <label for="branch" class="labelp">Branch Stock: </label> &nbsp;&nbsp;
+            <select [(ngModel)]="branchid" name="branchs" (change)="onChange()" class="form-control selectBranch" >
+                <option value="0">Choose Branch...</option>
+                <option *ngFor="let b of branchs" [ngValue]="b.id" >{{b.name}}</option>
+        </select>
+        </div>
+               
+    </form>
+    <br>
+    <div *ngFor="let b of branchstocks; let i = index" class="col-md-4 stockItem fleft" >
+        <div >{{i+1}}. {{b.productName}} : {{b.qty | number:'1.0-0'}} KGS</div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div>
+
+    <div class="col-md-12" style="float: left;">
+        <h1>All Branch List</h1><br>
+        <table class="table table-bordered">
+          <thead>
+              <tr>
+                  <th> SL</th>
+                  <!-- <th> Id</th> -->
+                   <th> Name</th>
+                  
+                  
+                  <th> Action</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let br of branchs; let i = index" >
+                  <td>{{i+1}}</td>   
+                  <!-- <td>{{student.id}}</td> -->
+                   <td><a href="/admin/branchdetails?id={{br.id}}" target="_blank">{{br?.name}}</a></td>
+                  
+                   
+                <td><a class="btn btn-success" [routerLink]="['/admin/branch/branchedit' ]" [queryParams]="{ id : br.id }"  >Edit</a>&nbsp; 
+                <button class="btn btn-danger" (click)="delete(br.id)" >Delete</button></td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+
+</div>  

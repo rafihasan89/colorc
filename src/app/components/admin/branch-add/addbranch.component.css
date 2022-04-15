@@ -1,0 +1,32 @@
+.border-left-primary {
+    border-left: .25rem solid #4e73df!important;
+}
+.text-primary {
+    color: #4e73df!important;
+}
+.text-gray-300 {
+    color: #dddfeb!important;
+}
+.fa-2x {
+    font-size: 2em;
+}
+table {
+    width: 100%;
+}
+
+ 
+.ng-valid[required], .ng-valid.required  {
+    border-left: 10px solid #42A948; /* green */
+  }
+  
+  .ng-invalid:not(form)  {
+    border-left: 10px solid #a94442; /* red */
+  }
+
+  input {
+    border: 2px solid #9ca99f;
+  }
+
+
+
+

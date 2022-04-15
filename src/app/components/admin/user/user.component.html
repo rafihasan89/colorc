@@ -1,0 +1,36 @@
+
+
+<div>
+
+    <div class="col-md-12" style="float: left;">
+      <br>
+      <h2>All User List</h2>
+        <table class="table table-bordered">
+          <thead>
+              <tr>
+                  <th> SL</th>
+                  <!-- <th> Id</th> -->
+                   <th> Name</th>
+                  <th> Email</th>
+                  <th> Username</th>
+                  
+                  <th> Action</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let user of users; let i = index" >
+                  <td>{{i+1}}</td>   
+                  <!-- <td>{{student.id}}</td> -->
+                   <td>{{user?.name}}</td>
+                  <td>{{user?.email}}</td>
+                  <td>{{user?.username}}</td>
+                   
+                <td><a class="btn btn-success"  [routerLink]="['/admin/user/useredit' ]" [queryParams]="{ id : user.id }"  >Edit</a>&nbsp; 
+                <button class="btn btn-danger" (click)="delete(user.id)" >Delete</button></td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+
+</div>  
+

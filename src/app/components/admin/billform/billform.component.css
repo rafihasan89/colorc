@@ -1,0 +1,87 @@
+input[type="radio"] {
+  
+  width: 2.15em;
+  height: 2.15em;
+
+  
+}
+.form-check-label{
+  font-size: 20px;
+  font-weight: bold;
+}
+::ng-deep .blue-snackbar {
+  background: #2196F3;
+}
+input::-webkit-input-placeholder {
+  color: black; /*Change the placeholder color*/
+  opacity: 0.1; /*Change the opacity between 0 and 1*/
+}
+  .selectParty{
+      width: 35%;
+  }
+  .selectBranch{
+    width: 25%;
+}
+.labelp{
+    font-size: 20px;
+    font-weight: bold; 
+}
+  
+select {
+    
+    font-size: 20px;
+    font-weight: bold;
+    padding: 2px 5px;
+}
+select option {
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 3px;
+    padding-bottom: 3px;
+     
+    
+  }
+  .item{
+      margin-bottom: 10px;
+  }
+  .sname{
+  padding-right: 10px;
+  font-size: 25px;
+  font-weight: bold;
+  float: left;
+  width: 12%;
+ 
+  }
+  .qty{
+    width: 25%;
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  .sprice{
+    width: 25%;
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  .itotal{
+    width: 32%;
+    float: left;
+    font-size: 20px;
+  font-weight: bold;
+  margin-right: 10px;
+  }
+  .samount{
+    width: 90px;
+    font-size: 30px;
+  font-weight: bold;
+  }
+  .amount{
+    width: 250px;
+    font-size: 30px;
+    font-weight: bold;
+    background-color:green;
+    color: #ffffff;
+  }

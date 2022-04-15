@@ -1,0 +1,27 @@
+#tt{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#tt td{
+border: 1px solid #000000;
+font-size: 16px;
+font-weight: bold;
+}
+
+#tt tr td:nth-child(2) {
+    width: 15px;
+}
+ 
+
+#tt2{
+    border-collapse: collapse;
+    width: 100%;
+}
+#tt2 td{
+border: 1px solid #000000;
+font-size: 16px;
+font-weight: bold;
+text-align: center;
+}
+ 

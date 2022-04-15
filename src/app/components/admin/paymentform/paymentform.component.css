@@ -1,0 +1,58 @@
+.border-left-primary {
+    border-left: .25rem solid #4e73df!important;
+}
+.text-primary {
+    color: #4e73df!important;
+}
+.text-gray-300 {
+    color: #dddfeb!important;
+}
+.fa-2x {
+    font-size: 2em;
+}
+table {
+    width: 100%;
+  }
+
+  .acenter{
+    text-align: center;
+}
+.fleft{
+    float: left;
+    margin-right: 5px;
+}
+
+.marginBottum{
+    margin-bottom: 10px;
+}
+
+.ng-valid[required], .ng-valid.required  {
+    border-left: 10px solid #42A948; /* green */
+  }
+  
+  .ng-invalid:not(form)  {
+    border-left: 10px solid #a94442; /* red */
+  }
+
+
+select {
+    width:420px; 
+    line-height: 24px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 2px 5px;
+}
+select option {
+    font-size: 24px;
+    /* font-weight: bold; */
+    padding-top: 3px;
+    padding-bottom: 3px;
+     
+    
+  }
+  .amount{
+    font-size: 30px;
+    font-weight: bold;
+    background-color:green;
+    color: #ffffff;
+  }

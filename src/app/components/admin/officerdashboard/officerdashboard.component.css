@@ -1,0 +1,55 @@
+.border-left-primary {
+    border-left: .25rem solid #4e73df!important;
+}
+.text-primary {
+    color: #4e73df!important;
+}
+.text-gray-300 {
+    color: #dddfeb!important;
+}
+.fa-2x {
+    font-size: 2em;
+}
+table {
+    width: 100%;
+  }
+
+  .acenter{
+    text-align: center;
+}
+.fleft{
+    float: left;
+    margin-right: 5px;
+}
+.home{
+    width: 7.3%;
+}
+.addUser{
+    width: 10.8%;
+}
+.addCustomer{
+    width: 11.6%;
+}
+.addAccount{
+    width: 12.2%;
+    margin-left: 5px;;
+}
+.addTransfer{
+    width: 8.2%;
+    margin-left: 5px;;
+}
+.deposit{
+    width: 7.9%;
+    margin-left: 5px;
+}
+.checkBalance{
+    width: 12.5%;
+    margin-left: 5px;
+}
+.withdraw{
+    width: 8.5%;
+    margin-left: 5px;
+}
+.marginBottum{
+    margin-bottom: 10px;
+}
